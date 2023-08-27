@@ -4,4 +4,4 @@ config {
   schema: "raw_ecom",
   name: "orderitems",
   description: "raw orderitem table"
-}
+} 
