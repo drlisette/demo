@@ -10,6 +10,10 @@
         }
       ],
       "gitRef": "master"
+    },
+    {
+      "name": "dev_environment",
+      "gitRef": "dev_cissy"
     }
   ]
 }
