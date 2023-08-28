@@ -1,0 +1,12 @@
+config {
+    type: "assertion",
+    // documentation
+    description: "ensure net sales are all positive",
+    database: "upbeat-fountain-219910",
+    schema: "staging_ecom",
+    hermetic: false
+}
+
+SELECT *
+FROM ${ref({name: "orderitems", schema: "staging_ecom"})}
+WHERE net_sales <= 0
