@@ -13,12 +13,6 @@
     },
     {
       "name": "dev_environment",
-      "schedules": [
-        {
-          "name": "new_schedule",
-          "cron": "0 16 * * *"
-        }
-      ],
       "gitRef": "dev_cissy"
     }
   ]
