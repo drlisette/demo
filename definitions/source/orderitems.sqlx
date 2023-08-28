@@ -1,0 +1,7 @@
+config {
+  type: "declaration",
+  database: "upbeat-fountain-219910",
+  schema: "raw_ecom",
+  name: "orderitems",
+  description: "raw orderitem table"
+} 
