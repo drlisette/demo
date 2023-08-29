@@ -29,6 +29,6 @@ left join
            , concat(city, ',', country) as location
     from ${ref({name: "users", schema: "staging_ecom"})}
    ) as U
-on O.user_id = U.user_id 
+on O1.user_id = U.user_id 
 order by O1.user_id ASC, O1.total_category_spending DESC
 

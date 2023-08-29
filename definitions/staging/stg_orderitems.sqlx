@@ -25,7 +25,7 @@ config {
     uniqueKey: ["id"],
     nonNull: ["net_sales", "create_date"],
     /* custom check */
-    rowConditions: ["assert_positive_net_sales"]
+    rowConditions: ["net_sales >= 0"]
   }
 }
 
