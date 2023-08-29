@@ -1,6 +1,6 @@
 // Read more in the JS API documentation here: https://docs.dataform.co/guides/javascript/js-api
 
-function render_sql(min_dt) {
+function render_sql(table, min_dt) {
     let sql_template = `
         SELECT id
                , first_name
@@ -12,7 +12,7 @@ function render_sql(min_dt) {
                , country
                , traffic_source
                , create_date
-        FROM ${constants.PROJECT_ID}.raw_ecom.users
+        FROM ${table}
         WHERE create_date > "${min_dt}"
     `;
 

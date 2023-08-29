@@ -1,0 +1,36 @@
+config {
+  type: "view",
+  database: constants.PROJECT_ID, 
+  schema: "staging_ecom",
+  name: "orders",
+  /* documentation */
+  description: "E-commerce orders data",
+  columns: {
+    order_id: "order ID", 
+    user_id: "user ID", 
+    status: "order status", 
+    create_date: "order creation date",
+    return_date: "order return date",
+    ship_date: "order shipping date", 
+    deliver_date: "order delivery date",
+    item_quantity: "item quantity within order"
+  },
+  /* data quality check */
+  assertions: {
+    /* built-in check */
+    /* https://docs.dataform.co/reference TableAssertions */
+    uniqueKey: ["order_id"],
+    nonNull: ["user_id", "status"]
+  }
+}
+
+select order_id
+       , user_id
+       , status
+       , create_date
+       , return_date
+       , ship_date
+       , deliver_date
+       , item_quantity
+from 
+   ${ref({name: "orders", schema: "raw_ecom"})}

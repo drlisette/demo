@@ -2,11 +2,11 @@ config {
     type: "assertion",
     /* documentation */
     description: "ensure net sales are all positive",
-    database: "${constants.PROJECT_ID}",
+    database: constants.PROJECT_ID,
     schema: "staging_ecom",
     hermetic: false
 }
 
 SELECT *
-FROM ${constants.PROJECT_ID}.staging_ecom.orderitems  
+FROM ${ref({name: "orderitems", schema: "staging_ecom"})} 
 WHERE net_sales <= 0
