@@ -1,6 +1,6 @@
 config {
   type: "view",
-  database: "upbeat-fountain-219910", /*不能用constants！！！*/
+  database: constants.PROJECT_ID, 
   schema: "staging_ecom",
   name: "users",
   /* documentation */
@@ -19,4 +19,6 @@ config {
   }
 }
 
-${script_builder_stg_users.render_sql("2021-01-01")}
+${script_builder_stg_users.render_sql(
+  ref({name: "users", schema: "raw_ecom"})
+  , "2021-01-01")}

@@ -1,6 +1,6 @@
 config {
   type: "view",
-  database: "upbeat-fountain-219910", 
+  database: constants.PROJECT_ID, 
   schema: "staging_ecom",
   name: "orderitems",
   /* documentation */
@@ -23,12 +23,10 @@ config {
     /* built-in check */
     /* https://docs.dataform.co/reference TableAssertions */
     uniqueKey: ["id"],
-    nonNull: ["net_sales", "create_date"]
-  },
-  /* custom check */
-  dependencies: [
-    "assert_positive_net_sales"
-  ]
+    nonNull: ["net_sales", "create_date"],
+    /* custom check */
+    rowConditions: ["net_sales >= 0"]
+  }
 }
 
 select id
@@ -43,5 +41,4 @@ select id
       , return_date
       , net_sales
 from 
-   ${constants.PROJECT_ID}.raw_ecom.orderitems
-   /* ${ref({name: "orderitems", schema: "raw_ecom"})} */
+   ${ref({name: "orderitems", schema: "raw_ecom"})}

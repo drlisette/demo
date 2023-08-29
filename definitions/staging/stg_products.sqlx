@@ -1,0 +1,34 @@
+config {
+  type: "view",
+  database: constants.PROJECT_ID, 
+  schema: "staging_ecom",
+  name: "products",
+  /* documentation */
+  description: "E-commerce products data",
+  columns: {
+    id: "product ID", 
+    category: "product category", 
+    name: "product name", 
+    brand: "product brand",
+    department: "product department",
+    sku: "product sku", 
+    distribution_center_id: "product distribution center ID"
+  },
+  /* data quality check */
+  assertions: {
+    /* built-in check */
+    /* https://docs.dataform.co/reference TableAssertions */
+    uniqueKey: ["id"]
+  }
+}
+
+select id
+       , category
+       , name
+       , brand
+       , department
+       , sku
+       , distribution_center_id
+from 
+   ${ref({name: "products", schema: "raw_ecom"})}
+where not category is null

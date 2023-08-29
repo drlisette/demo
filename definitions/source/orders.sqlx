@@ -1,6 +1,6 @@
 config {
   type: "declaration",
-  database: "${constants.PROJECT_ID}",
+  database: constants.PROJECT_ID,
   schema: "raw_ecom",
   name: "orders",
   description: "raw order table"
