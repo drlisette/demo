@@ -8,6 +8,5 @@ config {
 }
 
 SELECT *
-FROM staging_ecom.orderitems  
-/* ${ref({name: "orderitems", schema: "staging_ecom"}) } */
+FROM ${constants.PROJECT_ID}.staging_ecom.orderitems  
 WHERE net_sales <= 0

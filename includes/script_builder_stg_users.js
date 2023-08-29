@@ -12,7 +12,7 @@ function render_sql(min_dt) {
                , country
                , traffic_source
                , create_date
-        FROM raw_ecom.users
+        FROM ${constants.PROJECT_ID}.raw_ecom.users
         WHERE create_date > "${min_dt}"
     `;
 

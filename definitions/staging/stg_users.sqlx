@@ -1,6 +1,6 @@
 config {
   type: "view",
-  database: "${constants.PROJECT_ID}",
+  database: "upbeat-fountain-219910", /*不能用constants！！！*/
   schema: "staging_ecom",
   name: "users",
   /* documentation */
