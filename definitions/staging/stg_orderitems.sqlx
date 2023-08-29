@@ -26,8 +26,7 @@ config {
     nonNull: ["net_sales", "create_date"],
     /* custom check */
     rowConditions: ["assert_positive_net_sales"]
-  },
- 
+  }
 }
 
 select id
@@ -42,4 +41,5 @@ select id
       , return_date
       , net_sales
 from 
-   ${ref({name: "orderitems", schema: "raw_ecom"})}
+   raw_ecom.orderitems 
+   /* ${ref({name: "orderitems", schema: "raw_ecom"})} 会有问题 */

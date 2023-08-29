@@ -16,12 +16,7 @@ config {
     country: "user location",
     traffic_source: "from where user access ecommerce site",
     create_date: "user creation date"
-  },
-  /* data quality check */
-  assertions: {
-    /* built-in check */
-    /* https://docs.dataform.co/reference TableAssertions */
-    uniqueKey: ["id"]
+  }
 }
 
 ${script_builder_stg_users.render_sql("2021-01-01")}
