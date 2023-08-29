@@ -1,0 +1,22 @@
+config {
+  type: "view",
+  database: "upbeat-fountain-219910", /*不能用constants！！！*/
+  schema: "staging_ecom",
+  name: "users",
+  /* documentation */
+  description: "E-commerce user data",
+  columns: {
+    id: "row ID",
+    first_name: "user first name, encrypted",
+    last_name: "user last name, encrypted",
+    email: "user email address, encrypted",
+    age: "user age",
+    gender: "user gender",
+    city: "user location",
+    country: "user location",
+    traffic_source: "from where user access ecommerce site",
+    create_date: "user creation date"
+  }
+}
+
+${script_builder_stg_users.render_sql("2021-01-01")}

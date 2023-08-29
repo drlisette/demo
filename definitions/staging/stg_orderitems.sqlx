@@ -1,0 +1,47 @@
+config {
+  type: "view",
+  database: "upbeat-fountain-219910", 
+  schema: "staging_ecom",
+  name: "orderitems",
+  /* documentation */
+  description: "E-commerce orderitem data",
+  columns: {
+    id: "row ID",
+    order_id: "order ID",
+    user_id: "user ID",
+    product_id: "product ID",
+    inventory_item_id: "inventory item ID",
+    status: "order status",
+    create_date: "order creation date",
+    ship_date: "order shipping date",
+    deliver_date: "order delivery date",
+    return_date: "order return date",
+    net_sales: "order sales"
+  },
+  /* data quality check */
+  assertions: {
+    /* built-in check */
+    /* https://docs.dataform.co/reference TableAssertions */
+    uniqueKey: ["id"],
+    nonNull: ["net_sales", "create_date"]
+  },
+  /* custom check */
+  dependencies: [
+    "assert_positive_net_sales"
+  ]
+}
+
+select id
+      , order_id
+      , user_id
+      , product_id
+      , inventory_item_id
+      , status
+      , create_date
+      , ship_date
+      , deliver_date
+      , return_date
+      , net_sales
+from 
+   ${constants.PROJECT_ID}.raw_ecom.orderitems
+   /* ${ref({name: "orderitems", schema: "raw_ecom"})} */

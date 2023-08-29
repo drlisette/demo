@@ -1,0 +1,28 @@
+config {
+  type: "view",
+  database: "upbeat-fountain-219910", 
+  schema: "reporting_ecom",
+  name: "user_spending",
+  /* documentation */
+  description: "Create a summary view for recent users including statistics on total spending",
+  columns: {
+    user_id: "user ID",
+    location: "user location",
+    total_spending: "total spending"
+   }
+}
+
+select O.user_id
+      , U.location
+      , O.total_spending 
+from (select user_id
+            , coalesce(sum(net_sales), 0) as total_spending
+      from ${constants.PROJECT_ID}.staging_ecom.orderitems
+      group by user_id) as O
+left join
+   (select id as user_id
+           , concat(city, ',', country) as location
+    from ${constants.PROJECT_ID}.staging_ecom.users 
+   ) as U
+on O.user_id = U.user_id 
+
