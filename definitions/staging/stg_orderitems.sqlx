@@ -1,6 +1,6 @@
 config {
   type: "view",
-  database: constants.PROJECT_ID, 
+  database: constants.PROJECT_ID,
   schema: "staging_ecom",
   name: "orderitems",
   /* documentation */
@@ -29,16 +29,22 @@ config {
   }
 }
 
-select id
-      , order_id
-      , user_id
-      , product_id
-      , inventory_item_id
-      , status
-      , create_date
-      , ship_date
-      , deliver_date
-      , return_date
-      , net_sales
-from 
-   ${ref({name: "orderitems", schema: "raw_ecom"})}
+select
+  id,
+  order_id,
+  user_id,
+  product_id,
+  inventory_item_id,
+  status,
+  create_date,
+  ship_date,
+  deliver_date,
+  return_date,
+  net_sales
+from
+  ${
+    ref({
+      name: "orderitems",
+      schema: "raw_ecom"
+    })
+  }
